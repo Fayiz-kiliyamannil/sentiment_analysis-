@@ -3,18 +3,20 @@ import ApexCharts from 'apexcharts';
 import axios from 'axios';
 // import Loading from './Loading';
 
-function Graph({setLoading,setError}) {
+
+function Graph({setError}) {
   const [sentimentalValue, setSentimentalValue] = useState({
     positive: '',
     negative: '',
     neutral: ''
   });
+  const [loading, setLoading] = useState(false)
 
   let chart = null;
 
   const getChartData = async () => {
-    setLoading(true)
     try {
+      setLoading(true)
       const response = await axios.get("https://sendiment-analysis-backend.onrender.com/api/graph");
       if (response.data.success) {
         setSentimentalValue(response.data.value);
@@ -23,7 +25,9 @@ function Graph({setLoading,setError}) {
           response.data.value.negative || sentimentalValue.negative,
           response.data.value.positive || sentimentalValue.positive
         ];
+        setLoading(false)
 
+    
         const options = {
           series: dataValues,
           colors: ["#E8F52A", "#E91A3F", "#27E393"],
@@ -86,7 +90,6 @@ function Graph({setLoading,setError}) {
           chart = new ApexCharts(document.getElementById("pie-chart"), options);
           chart.render();
         }
-        setLoading(false)
       }
     } catch (error) {
       setLoading(false)
@@ -105,10 +108,10 @@ function Graph({setLoading,setError}) {
     };
   }, []);
 
-
+ 
   return (
     <>
-      <div className="max-w-sm w-96 mt-5 mr-5 bg-gray-200  rounded-lg shadow  bg-opacity-70  p-4 md:p-6">
+      <div className="max-w-sm w-96  mt-5 mr-5 bg-gray-200  rounded-lg shadow  bg-opacity-70  p-4 md:p-6">
         <div className="flex justify-between items-start w-full">
           <div className="flex-col items-center">
             <div className="flex items-center mb-1">

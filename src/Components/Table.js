@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import Loading from './Loading';
 // import Loading from './Loading';
 
-function Table({setLoading,setError}) {
+function Table({setError}) {
 const [sendimetalValue,setSendimentalValue] = useState([])
-// const [loading, setLoading] = useState(false)
+const [loading, setLoading] = useState(false)
 
 const getTableData = async ()=>{
   try {
@@ -25,6 +26,13 @@ getTableData()
 },[])
 
 
+if(loading){
+  return (
+    <div className="h-screen" >
+      <Loading/>
+    </div>
+  )
+}
 
   return (
     <div className='p-5'>

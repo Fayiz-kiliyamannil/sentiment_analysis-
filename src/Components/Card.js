@@ -32,7 +32,11 @@ function Card() {
   }
 
   if(loading){
-    return <Loading/>
+    return (
+      <div className='h-screen'>
+        <Loading/>
+      </div>
+    )
   }
 
   if (error) {
