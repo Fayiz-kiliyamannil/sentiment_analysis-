@@ -14,7 +14,7 @@ function Card() {
     e.preventDefault()
     try {
       setLoading(true)
-      const resopnse = await axiox.post("http://localhost:5001/api/form", { comment })
+      const resopnse = await axiox.post("https://sendiment-analysis-backend.onrender.com/api/form", { comment })
       if (resopnse.data.success) {
         setLoading(false)
         setSentimental(resopnse.data.message)

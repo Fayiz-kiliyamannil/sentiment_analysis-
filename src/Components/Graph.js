@@ -16,7 +16,7 @@ function Graph() {
   const getChartData = async () => {
     setLoading(true)
     try {
-      const response = await axios.get("http://localhost:5001/api/graph");
+      const response = await axios.get("https://sendiment-analysis-backend.onrender.com/api/graph");
       if (response.data.success) {
         setSentimentalValue(response.data.value);
         const dataValues = [

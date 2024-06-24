@@ -9,7 +9,7 @@ const [loading, setLoading] = useState(false)
 const getTableData = async ()=>{
   try {
     setLoading(true)
-    const response = await axios.get("http://localhost:5001/api/table")
+    const response = await axios.get("https://sendiment-analysis-backend.onrender.com/api/table")
     if(response.data.success){
       setSendimentalValue(response.data.value)
       setLoading(false)
