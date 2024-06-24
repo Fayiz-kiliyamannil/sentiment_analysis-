@@ -25,6 +25,7 @@ function Card() {
       }
 
     } catch (error) {
+      setLoading(false)
       setError(error)
       console.error(error);
     }

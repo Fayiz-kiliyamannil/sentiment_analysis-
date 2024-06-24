@@ -15,6 +15,7 @@ const getTableData = async ()=>{
       setLoading(false)
     }
   } catch (error) {
+    setLoading(false)
     console.error(error);
   }
 }
