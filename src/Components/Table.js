@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Loading from './Loading';
+// import Loading from './Loading';
 
-function Table() {
+function Table({setLoading,setError}) {
 const [sendimetalValue,setSendimentalValue] = useState([])
-const [loading, setLoading] = useState(false)
+// const [loading, setLoading] = useState(false)
 
 const getTableData = async ()=>{
   try {
@@ -16,6 +16,7 @@ const getTableData = async ()=>{
     }
   } catch (error) {
     setLoading(false)
+    setError(error.message)
     console.error(error);
   }
 }
@@ -23,9 +24,6 @@ useEffect(()=>{
 getTableData()
 },[])
 
-if(loading){
-  return <Loading/> 
-}
 
 
   return (

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import ApexCharts from 'apexcharts';
 import axios from 'axios';
-import Loading from './Loading';
+// import Loading from './Loading';
 
-function Graph() {
+function Graph({setLoading,setError}) {
   const [sentimentalValue, setSentimentalValue] = useState({
     positive: '',
     negative: '',
     neutral: ''
   });
-  const [loading,setLoading] = useState(false)
 
   let chart = null;
 
@@ -91,6 +90,7 @@ function Graph() {
       }
     } catch (error) {
       setLoading(false)
+      setError(error.message)
       console.error(error);
     }
   };
