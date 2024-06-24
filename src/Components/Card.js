@@ -34,6 +34,7 @@ function Card() {
   if(loading){
     return (
       <div className='h-screen'>
+        <h1 className='text-bold text-purple-500 text-xl text-center pt-20 ' > At first, it will take its sweet time to load because it's on the freebie plan...</h1>
         <Loading/>
       </div>
     )
